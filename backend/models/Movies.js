@@ -16,7 +16,7 @@ const movieSchema = new mongoose.Schema({
     }
     ],
     releaseDate: {
-        type: String,
+        type: Date,
         required: true,
     },
     posterUrl: {
@@ -27,10 +27,12 @@ const movieSchema = new mongoose.Schema({
         type: Boolean,
     },
     bookings: [{
-        type: String }],
+        type: mongoose.Types.ObjectId,
+        ref: "Booking"
+             }],
         admin: {
         type: mongoose.Types.ObjectId,
-        ref: "Movie",
+        ref: "Admin",
         required: true,
     },
 });

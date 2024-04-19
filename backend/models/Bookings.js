@@ -2,20 +2,22 @@ import mongoose from "mongoose";
 
 const bookingSchema = new mongoose.Schema({
     movie: {
-        type: String,
-        required: true
+        type: mongoose.Types.ObjectId,
+        ref: "Movie",
+        required: true,
     },
     date: {
         type: Date,
-        required: true
+        required: true,
     },
     seatNumber: {
         type: Number,
-        required: true
+        required: true,
     },
     user: {
-        type: String,
-        required: true
+        type: mongoose.Types.ObjectId,
+        ref: "User",
+        required: true,
     },
 });
 

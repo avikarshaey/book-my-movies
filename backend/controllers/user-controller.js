@@ -1,5 +1,6 @@
 import User from "../models/User.js";
 import bcrypt from 'bcryptjs';
+import Bookings from "../models/Bookings.js";
 export const getAllUsers = async (req,res,next) => {
     let users;
     try{
@@ -84,7 +85,7 @@ export const deleteUser = async (req, res, next) => {
         return res.status(500).json({ message: "Kuch toh Gadbad Hai" });
     }
     res.status(200).json({message: "Mubarak Ho Delete Ho Gaya "});
-}
+};
 
 export const login = async (req, res, next) => {
     const { email, password } = req.body;
@@ -114,4 +115,18 @@ export const login = async (req, res, next) => {
         }
 
         return res.status(200).json({ message: "Login Successfull" });
-}
+};
+
+export const getBookingsOfUser = async (req, res, next) => {
+    const id = req.params.id;
+    let bookings;
+    try { 
+        bookings = await Bookings.find({ user: id });
+    } catch (err) {
+        console.log(err);
+    }
+    if (!bookings) {
+        return res.status(500).json({ message: "Unable to get Booking" });
+    }
+    return res.status(200).json({ bookings });
+};
