@@ -1,9 +1,17 @@
 import { Box, Button, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MovieItem from './Movies/MovieItem';
 import { Link } from 'react-router-dom';
+import { getAllMovies } from '../axios/api-helpers';
 
 const HomePage = () => {
+    const [movies,setMovies]=useState([]);
+    useEffect(()=>{
+        getAllMovies()
+        .then((data)=>setMovies(data.movies))
+        .catch((err)=>console.log(err));
+    },[]);
+    console.log(movies);
     return (
     <Box width={"100%"} height="100%" margin="auto" marginTop={2} >
         <Box margin={"auto"} width="80%" height={"40vh"} padding={2} >
