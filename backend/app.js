@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRouter from "./routes/user-routes.js";
@@ -8,9 +9,13 @@ import bookingsRouter from "./routes/booking-routes.js";
 dotenv.config();
 const app = express();
 
+
 // app.use("/",(req,res,next)=>{
 //     res.send("<h1>Namaskar</h1>");
 // })
+
+//use of cors
+app.use(cors());
 
 //middlewares
 app.use(express.json());

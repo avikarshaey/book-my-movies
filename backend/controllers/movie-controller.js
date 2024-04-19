@@ -76,6 +76,7 @@ export const getAllMovies = async (req, res, next) => {
 
     try { 
         movies = await Movies.find();
+        console.log(movies);
 
     } catch(err){
         return console.log(err)
