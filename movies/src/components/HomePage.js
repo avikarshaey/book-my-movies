@@ -28,8 +28,12 @@ const HomePage = () => {
                 alignItems="center"
                 flexWrap="wrap"
                 >
-                    {[1, 2, 3, 4].map((item) => (
-                        <MovieItem key={item} />
+                    {movies && movies.slice(7,11).map((movie,index) => (
+                        <MovieItem id={movie.id}
+                        title={movie.title}
+                        posterUrl={movie.posterUrl}
+                        releaseDate={movie.releaseDate}
+                        key={index} />
                     ))}
             </Box>
             <Box display="flex" padding={5} margin="auto" >

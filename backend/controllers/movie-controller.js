@@ -3,6 +3,8 @@ import jwt from 'jsonwebtoken'
 import Admin from '../models/Admin.js';
 import Movies from '../models/Movies.js';
 import mongoose from 'mongoose';
+
+
 export const addMovie = async(req, res, next)=>{
     const extractedToken = req.headers.authorization.split(" ")[1]; //Bearer Token
     if(!extractedToken && extractedToken.trim() === "") {
@@ -93,6 +95,20 @@ export const getMovieById = async (req, res, next) => {
     let movie;
     try{
         movie = await Movies.findById(id)
+    } catch (err) {
+        return console.log(err)
+    }
+
+    if (!movie) {
+        return res.status(404).json({message:"Invalid Movie ID"})
+    }
+    return res.status(200).json({ movie })
+};
+export const updateMovie = async (req, res, next) => {
+    const id = req.params.id;
+    let movie;
+    try{
+        movie = await Movies.findByIdAndUpdate(id);
     } catch (err) {
         return console.log(err)
     }
