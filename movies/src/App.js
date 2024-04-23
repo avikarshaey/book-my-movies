@@ -4,10 +4,16 @@ import HomePage from "./components/HomePage";
 import Movies from "./components/Movies/Movies";
 import Admin from "./components/Admin/Admin";
 import Auth from "./components/Auth/Auth";
+import { useSelector } from "react-redux";
 
 
 function App() {
-  return <div> 
+  const isAdminLoggedIn = useSelector((state)=>state.admin.isLoggedIn);
+  const isUserLoggedIn = useSelector((state)=>state.user.isLoggedIn);
+  console.log("isAdminLoggedIn",isAdminLoggedIn);
+  console.log("isUserLoggedIn",isUserLoggedIn);
+
+  return (<div> 
     <Header/>
     <section>
       <Routes>
@@ -17,7 +23,7 @@ function App() {
         <Route path="/auth" element={<Auth/>} />
       </Routes>
     </section>
-     </div>
+     </div>)
 }
 
 export default App;

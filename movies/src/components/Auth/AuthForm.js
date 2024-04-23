@@ -79,7 +79,7 @@ const AuthForm = ({onSubmit , isAdmin }) => {
                 variant='contained'> {isSignup? "Signup":"Login"} </Button>
                 {
                     !isAdmin && (
-                    <Button onClick={() => setIsSignup(!isSignup)} sx={{ mt: 2, borderRadius: 10, }}  
+                    <Button onClick={() => setIsSignup(!isSignup)} sx={{ mt: 2, borderRadius: 10 }}  
                 fullWidth 
                 > Switch To { isSignup ? "Login" : "Signup" } </Button>
             )}

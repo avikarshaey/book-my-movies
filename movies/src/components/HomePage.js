@@ -28,7 +28,7 @@ const HomePage = () => {
                 alignItems="center"
                 flexWrap="wrap"
                 >
-                    {movies && movies.slice(7,11).map((movie,index) => (
+                    {movies && movies.slice(0,4).map((movie,index) => (
                         <MovieItem id={movie.id}
                         title={movie.title}
                         posterUrl={movie.posterUrl}
